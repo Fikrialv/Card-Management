@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "project": {
+    "name": "Card Management",
+    "productType": "internal RFID operations dashboard",
+    "stack": ["Laravel", "Inertia.js", "React", "TypeScript", "Tailwind CSS"]
+  },
+  "sources": {
+    "tokens": [],
+    "components": [],
+    "assets": [],
+    "instructions": [
+      "AGENTS.md"
+    ]
+  },
+  "design": {
+    "colorMode": "light",
+    "colors": {
+      "accent": "cobalt #173f78",
+      "surface": "slate"
+    },
+    "typography": {},
+    "spacing": {},
+    "radius": {},
+    "shadows": {},
+    "motion": {},
+    "density": "high"
+  },
+  "components": {
+    "installed": [],
+    "preferredPrimitives": [],
+    "patterns": []
+  },
+  "constraints": {
+    "must": [],
+    "avoid": []
+  },
+  "decisions": [
+    {
+      "date": "2026-09-13",
+      "decision": "Monitoring uses a calm cobalt, high-density operational layout with semantic alerts, responsive stacked rows, and local example data until server metrics are implemented."
+    }
+  ],
+  "evidence": [
+    {
+      "fact": "project.instructions",
+      "source": "AGENTS.md"
+    }
+  ],
+  "generatedAt": "2026-09-08T06:45:27.156Z"
+}

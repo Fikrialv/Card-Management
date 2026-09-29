@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Keep compact metadata readable on light surfaces. */
+.text-slate-400 { color: #64748b; }
+aside .text-slate-400 { color: #cbd5e1; }
+
+@layer base {
+    html { @apply bg-slate-50; }
+    body { @apply font-sans antialiased; }
+    input[type="date"] { display: block; }
+    aside > nav { overflow-x: hidden; }
+    :focus-visible { outline: 3px solid #93b4e8; outline-offset: 2px; }
+}

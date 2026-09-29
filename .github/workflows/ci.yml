@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: rfid_codex_test_20260908
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, pdo_mysql
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            backend/package-lock.json
+            customer-portal/package-lock.json
+      - run: composer install --no-interaction --prefer-dist
+        working-directory: backend
+      - run: npm ci
+        working-directory: backend
+      - run: npm ci
+        working-directory: customer-portal
+      - run: npx playwright install --with-deps chromium
+        working-directory: customer-portal
+      - shell: pwsh
+        run: ./scripts/verify.ps1 -WithMariaDb
