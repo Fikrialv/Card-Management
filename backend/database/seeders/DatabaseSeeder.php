@@ -19,11 +19,19 @@ final class DatabaseSeeder extends Seeder
     public function run(): void
     {
         DB::transaction(function (): void {
-            $users = collect(['admin', 'viewer'])->mapWithKeys(function (string $role): array {
-                $user = User::query()->updateOrCreate(
-                    ['email' => "$role@example.test"],
-                    ['name' => ucfirst($role).' Demo', 'role' => $role, 'locale' => 'id', 'password' => Hash::make('password')],
-                );
+            $users = collect([
+                'admin' => ['username' => 'adminpertamina', 'name' => 'Admin Pertamina'],
+                'viewer' => ['username' => 'viewerpertamina', 'name' => 'Viewer Pertamina'],
+            ])->mapWithKeys(function (array $account, string $role): array {
+                $user = User::query()->where('role', $role)->first() ?? new User;
+                $user->forceFill([
+                    'name' => $account['name'],
+                    'username' => $account['username'],
+                    'email' => $account['username'].'@rfid.local',
+                    'role' => $role,
+                    'locale' => 'id',
+                    'password' => Hash::make('retail1234'),
+                ])->save();
 
                 return [$role => $user];
             });

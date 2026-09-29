@@ -14,7 +14,7 @@ export default function Login({
     canResetPassword: boolean;
 }) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        email: '',
+        username: '',
         password: '',
     });
 
@@ -51,21 +51,21 @@ export default function Login({
 
             <form className="space-y-5" onSubmit={submit}>
                 <div className="space-y-2">
-                    <InputLabel htmlFor="email" value="Alamat email" />
+                    <InputLabel htmlFor="username" value="Nama pengguna" />
 
                     <TextInput
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={data.email}
+                        id="username"
+                        type="text"
+                        name="username"
+                        value={data.username}
                         className="block w-full rounded-xl border-slate-300 px-3 py-2.5 text-slate-950 shadow-none placeholder:text-slate-400 focus:border-blue-700 focus:ring-blue-700"
                         autoComplete="username"
-                        aria-invalid={Boolean(errors.email)}
+                        aria-invalid={Boolean(errors.username)}
                         isFocused={true}
-                        onChange={(e) => setData('email', e.target.value)}
+                        onChange={(e) => setData('username', e.target.value)}
                     />
 
-                    <InputError message={errors.email} className="text-sm" />
+                    <InputError message={errors.username} className="text-sm" />
                 </div>
 
                 <div className="space-y-2">

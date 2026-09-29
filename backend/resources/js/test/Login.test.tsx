@@ -9,7 +9,7 @@ vi.mock('@inertiajs/react', () => ({
         <a {...props}>{children}</a>
     ),
     useForm: () => ({
-        data: { email: '', password: '', remember: false },
+        data: { username: '', password: '' },
         setData: vi.fn(),
         post: vi.fn(),
         processing: false,
@@ -29,7 +29,7 @@ describe('Login', () => {
         render(<Login canResetPassword />);
 
         expect(screen.getByRole('heading', { name: 'Masuk ke dashboard' })).toBeVisible();
-        expect(screen.getByLabelText('Alamat email')).toHaveAttribute('autocomplete', 'username');
+        expect(screen.getByLabelText('Nama pengguna')).toHaveAttribute('autocomplete', 'username');
         expect(screen.getByLabelText('Kata sandi')).toHaveAttribute('autocomplete', 'current-password');
         expect(screen.getByRole('button', { name: 'Masuk' })).toBeVisible();
         expect(screen.getByRole('link', { name: 'Lupa kata sandi?' })).toBeVisible();

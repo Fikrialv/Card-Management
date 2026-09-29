@@ -1396,3 +1396,4 @@ Install NPM dependencies:
 ```
 lucide-react, @radix-ui/react-slot, class-variance-authority, @radix-ui/react-scroll-area, @radix-ui/react-separator, @radix-ui/react-dialog, @radix-ui/react-label, @radix-ui/react-avatar, @radix-ui/react-icons, @radix-ui/react-navigation-menu, @radix-ui/react-dropdown-menu, @radix-ui/react-collapsible
 ```
+- [x] Replace internal demo login with username-only Admin and Viewer accounts and verify role authorization.

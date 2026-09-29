@@ -142,3 +142,4 @@ A task is DONE only after PRD acceptance, mapped source usage, server authorizat
 - UI recheck 2026-09-24: two-card public form, clean accessible upload controls, separate tracking tab, compact settings layout, and reference-aligned sidebar verified.
 - Navbar verification 2026-09-24: expanded/collapsed rail, active route, tooltip/focus, mobile drawer, shared role menu, header actions, and logout focus styling passed browser QA.
 - Final readiness recheck 2026-09-29: Pint, PHPStan, Composer validation/audit, Laravel tests (68/349), backend typecheck/lint/UI test/build, customer-portal lint/typecheck/tests (9)/build, immutable source hashes, public mobile/tablet/desktop overflow checks, login accessibility, and ngrok smoke all passed. Public root is the active guest website; `/admin` and `/viewer` remain protected.
+- Login internal menggunakan username-only: `adminpertamina` untuk Admin dan `viewerpertamina` untuk Viewer. Email tidak diminta pada layar login.
