@@ -1151,3 +1151,10 @@ Remaining:
 - Full `scripts/verify.ps1 -SkipBrowser` could not complete in the sandbox because its first Composer audit attempt was blocked by the restricted network proxy; the individual local gates were run separately. MySQL/MariaDB integration and browser E2E were not run in this audit.
 - Requirements remain intentionally incomplete in `Docs/todo.md`: hosting/account verification, MySQL/MariaDB constraints and concurrency, broader rollback/privacy/accessibility coverage, malware scanner capability, web push, and manual/device QA.
 - Review risks recorded for follow-up: `StockIn::handleQuantity()` derives the next RFID using an unlocked `max(number)` before its transaction, so concurrent receipts need a real MySQL/MariaDB proof and a race-safe allocation strategy; current procurement receipt creates synthetic sequential RFID numbers and does not accept/validate an external RFID identity range, while `Docs/plan.md` requires receipt identity source/range validation.
+
+# 2026-10-15 — Local and ngrok smoke run
+
+- Branch `dev` runs Laravel locally with `php artisan serve --host=127.0.0.1 --port=8099`; local root returned HTTP 200.
+- ngrok tunnel is online at the active project tunnel URL and forwards to port 8099.
+- Public smoke checks returned HTTP 200 for `/`, `/login`, and `/api/public/v1/request-requirements`.
+- `browser-harness --doctor` was attempted for browser QA but Chrome/daemon was unavailable in this environment; interactive browser QA remains a blocker. HTTP smoke verification passed.
