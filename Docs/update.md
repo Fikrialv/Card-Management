@@ -1158,3 +1158,10 @@ Remaining:
 - ngrok tunnel is online at the active project tunnel URL and forwards to port 8099.
 - Public smoke checks returned HTTP 200 for `/`, `/login`, and `/api/public/v1/request-requirements`.
 - `browser-harness --doctor` was attempted for browser QA but Chrome/daemon was unavailable in this environment; interactive browser QA remains a blocker. HTTP smoke verification passed.
+
+# 2026-10-15 — Edge interactive ngrok QA
+
+- Microsoft Edge was started with a dedicated CDP profile and connected to the ngrok URL through Playwright CDP fallback because the `agent-browser` CLI was not installed and browser-harness could not execute its stdin workflow in this environment.
+- Public root rendered the expected customer request heading and form; `/login` rendered the dashboard login heading with two input fields.
+- Mobile viewport check at 375px completed without horizontal overflow (`scrollWidth` and `clientWidth` both 360); expected request and upload controls were present.
+- Final Edge run reported zero console errors and zero failed network requests. The first proxied Edge attempt showed connection resets; the dedicated no-proxy Edge profile resolved them.
